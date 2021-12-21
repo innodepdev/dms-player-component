@@ -7,8 +7,8 @@
 dms-player-component 는 [**이노뎁(주)**](http://www.innodep.com/)의 [dms-player](https://www.npmjs.com/package/dms-player) 영상 연동 모듈을 활용한 preact 기반 컴포넌트 라이브러리 입니다.
 
 ## 🚩 Table of Contents
-- [Install](#-install)
-- [Usage](#-usage)
+- [Install](#install)
+- [Usage](#usage)
 
 ## Install
 
