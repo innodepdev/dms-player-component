@@ -1,7 +1,7 @@
 .vscode
 dist/index.html
-node_modules
-src
+node_modules/
+src/
 .eslintrc.js
 .gitignore
 .http
