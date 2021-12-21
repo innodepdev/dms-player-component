@@ -1,6 +1,6 @@
 {
   "name": "dms-player-component",
-  "version": "0.0.12",
+  "version": "1.0.13",
   "main": "dist/dms-player-component.js",
   "author": "TMS Platform Team, Ju Seongjin <jsj@innodep.com>",
   "license": "ISC",
