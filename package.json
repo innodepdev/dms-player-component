@@ -4,6 +4,10 @@
   "main": "dist/dms-player-component.js",
   "author": "TMS Platform Team, Ju Seongjin <jsj@innodep.com>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/innodepdev/dms-player-component.git"
+  },
   "scripts": {
     "serve:dev": "webpack --mode development && set DEV_SERVER=true & webpack-dev-server --mode development --hot --open",
     "serve:prod": "webpack --mode production && set DEV_SERVER=true & webpack-dev-server --mode production --hot --open",
