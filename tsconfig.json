@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "noImplicitAny": false,
+        "target": "es5",
+        "jsx": "react",
+        "jsxFactory": "h",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "baseUrl": ".",
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "removeComments": true,
+        "paths": {
+            "@src/*": ["src/*"],
+            "@interfaces/*": ["src/interfaces/*"],
+            "@ts/*": ["src/ts/*"],
+            "@components/*": ["src/ts/components/*"],
+            "@service/*": ["src/ts/service/*"]
+        },
+        "sourceMap": true,
+        "allowJs": true
+    },
+    "include": ["src/ts/**/*.ts", "src/ts/**/*.tsx", "src/interfaces/player-interface.ts"],
+    "exclude": ["node_modules"]
+}

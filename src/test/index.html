@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/androidstudio.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+        <style>
+            .player-wrap {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                width: 100%;
+                height: 55%;
+                padding: 1em;
+            }
+            .player-box {
+                width: 43%;
+                height: 100%;
+            }
+            .player-info {
+                width: 50%;
+                height: 100%;
+                color: #000;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .player-info h3 {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                margin: 0 1em;
+            }
+            
+            .player-info h3 button {
+                border: 1px solid #ff0000;
+                background: #ff0000;
+                color: #fff;
+                margin-right: 1em;
+                cursor: pointer;
+            }
+
+            .player-info pre {
+                margin: 0 1em;
+            }
+        </style>
+    </head>
+    <body style="padding:0; margin:0; width: 100%; height: 100vh; overflow-x: hidden; overflow-y: auto; display: flex; align-items: center; flex-direction: column;">
+        <div class="player-wrap">
+            <div class="player-box">
+                <div id="player1" style="width: 100%; height: 100%; overflow: hidden;"></div>
+            </div>
+            <div class="player-info">
+                <h3><button onclick="deleteFunc1()">1번영상 삭제</button>저장영상: 자동시작(autoPlay: true), 스냅샷표출(snapshot: true)</h3>
+                <pre>
+                    <code class="language-javascript">
+const options1 = {
+    parentElementId: 'player1',             // video 태그가 위치 할 부모 element ID
+    id: 'dms_video_1',                      // 생성대상 플레이어의 ID 지정
+    vms_id: '100869',                       // 영상정보: vms_id 
+    dev_serial: '51',                       // 영상정보: dev_serial
+    channel: '0',                           // 영상정보: Channel
+    media: '0',                             // 영상정보: media
+    srcType: 'vurix',                       // 원본소스타입: vurix, realhub
+    protocol: 'http',                       // media server url: 프로토콜 정보, http/https
+    host: 'ca-172-16-36-180.vurix.kr',      // media server url: host 정보, 접속 host url 또는 사용 할 media server host url
+    transcode: 720,                         // 인코딩 요청 값: -1=인코딩 적용 X, 0=원본, [-1, 0을 제외한 최소 값은 32]
+    startDate: 1639618920,                  // 저장영상 재생: 시작 UTC 시간(실시간일 경우 X)
+    endDate: 1639619520,                    // 저장영상 재생: 종료 UTC 시간(실시간일 경우 X)
+    autoPlay: true,                         // 자동재생: true/false
+    snapshot: true,                         // progress bar 마우스 이동 시, 스냅샷 처리 여부
+    capture: true,                          // 화면 캡쳐 버튼 활성화 여부
+    searchDate: true,                       // 저장영상 검색 기능(미구현)
+    scale: 10,                              // progress bar 아래 scale 표시 여부(scale 눈금 갯수)
+    errorMsgFunc: ((err) => {               // 에러 발생 콜백
+        console.error(err);
+    })
+};
+
+const playerInstance1 = new dmsPlayerComponent.Player(document.getElementById('player1'));
+playerInstance1.render(options1);
+
+// 삭제
+playerInstance1.destroy();
+                    </code>
+                </pre>
+            </div>
+        </div>
+        <div class="player-wrap">
+            <div class="player-box">
+                <div id="player2" style="width: 100%; height: 100%; overflow: hidden;"></div>
+            </div>
+            <div class="player-info">
+                <h3><button onclick="deleteFunc2()">2번영상 삭제</button>저장영상: 자동시작(autoPlay: false), 스냅샷표출(snapshot: false), 눈금표시(scale: 10)</h3>
+                <pre>
+                    <code class="language-javascript">
+const options2 = {
+    parentElementId: 'player2',             // video 태그가 위치 할 부모 element ID
+    id: 'dms_video_2',                      // 생성대상 플레이어의 ID 지정
+    vms_id: '100869',                       // 영상정보: vms_id 
+    dev_serial: '1',                        // 영상정보: dev_serial
+    channel: '0',                           // 영상정보: Channel
+    media: '0',                             // 영상정보: media
+    srcType: 'vurix',                       // 원본소스타입: vurix, realhub
+    protocol: 'http',                       // media server url: 프로토콜 정보, http/https
+    host: 'ca-172-16-36-180.vurix.kr',      // media server url: host 정보, 접속 host url 또는 사용 할 media server host url
+    transcode: 720,                         // 인코딩 요청 값: -1=인코딩 적용 X, 0=원본, [-1, 0을 제외한 최소 값은 32]
+    startDate: 1639895515,                  // 저장영상 재생: 시작 UTC 시간(실시간일 경우 X)
+    endDate: 1639895815,                    // 저장영상 재생: 종료 UTC 시간(실시간일 경우 X)
+    autoPlay: false,                        // 자동재생: true/false
+    snapshot: true,                         // progress bar 마우스 이동 시, 스냅샷 처리 여부
+    capture: true,                          // 화면 캡쳐 버튼 활성화 여부
+    scale: 10,                              // progress bar 아래 scale 표시 여부(scale 눈금 갯수)
+    errorMsgFunc: ((err) => {               // 에러 발생 콜백
+        console.error(err);
+    })
+};
+
+const playerInstance2 = new dmsPlayerComponent.Player(document.getElementById('player2'));
+playerInstance2.render(options2);
+
+// 삭제
+playerInstance2.destroy();
+                    </code>
+                </pre>
+            </div>
+        </div>
+        <div class="player-wrap">
+            <div class="player-box">
+                <div id="player3" style="width: 100%; height: 100%; overflow: hidden;"></div>
+            </div>
+            <div class="player-info">
+                <h3><button onclick="deleteFunc3()">3번영상 삭제</button>실시간 영상: 자동시작(autoPlay: false)</h3>
+                <pre>
+                    <code class="language-javascript">
+const options3 = {
+    parentElementId: 'player3',             // video 태그가 위치 할 부모 element ID
+    id: 'dms_video_3',                      // 생성대상 플레이어의 ID 지정
+    vms_id: '100869',                       // 영상정보: vms_id 
+    dev_serial: '5',                        // 영상정보: dev_serial
+    channel: '0',                           // 영상정보: Channel
+    media: '0',                             // 영상정보: media
+    srcType: 'vurix',                       // 원본소스타입: vurix, realhub
+    protocol: 'http',                       // media server url: 프로토콜 정보, http/https
+    host: 'ca-172-16-36-180.vurix.kr',      // media server url: host 정보, 접속 host url 또는 사용 할 media server host url
+    transcode: 720,                         // 인코딩 요청 값: -1=인코딩 적용 X, 0=원본, [-1, 0을 제외한 최소 값은 32]
+    autoPlay: true,                         // 자동재생: true/false
+    capture: true,                          // 화면 캡쳐 버튼 활성화 여부
+    errorMsgFunc: ((err) => {               // 에러 발생 콜백
+        console.error(err);
+    })
+};
+
+const playerInstance3 = new dmsPlayerComponent.Player(document.getElementById('player3'));
+playerInstance3.render(options3);
+
+// 삭제
+playerInstance3.destroy();
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </body>
+    <script>
+        const options1 = {
+            parentElementId: 'player1',             // video 태그가 위치 할 부모 element ID
+            id: 'dms_video_1',                      // 생성대상 플레이어의 ID 지정
+            vms_id: '100869',                       // 영상정보: vms_id 
+            dev_serial: '51',                       // 영상정보: dev_serial
+            channel: '0',                           // 영상정보: Channel
+            media: '0',                             // 영상정보: media
+            srcType: 'vurix',                       // 원본소스타입: vurix, realhub
+            protocol: 'http',                       // media server url: 프로토콜 정보, http/https
+            host: 'ca-172-16-36-180.vurix.kr',      // media server url: host 정보, 접속 host url 또는 사용 할 media server host url
+            transcode: 720,                         // 인코딩 요청 값: -1=인코딩 적용 X, 0=원본, [-1, 0을 제외한 최소 값은 32]
+            startDate: 1639618920,                  // 저장영상 재생: 시작 UTC 시간(실시간일 경우 X)
+            endDate: 1639619520,                    // 저장영상 재생: 종료 UTC 시간(실시간일 경우 X)
+            autoPlay: true,                         // 자동재생: true/false
+            snapshot: true,                         // progress bar 마우스 이동 시, 스냅샷 처리 여부
+            capture: true,                          // 화면 캡쳐 버튼 활성화 여부
+            searchDate: true,                       // 저장영상 검색 기능(미구현)
+            scale: 10,
+            errorMsgFunc: ((err) => {               // 에러 발생 콜백
+				console.error(err);
+			})
+        };
+
+        const options2 = {
+            parentElementId: 'player2',             // video 태그가 위치 할 부모 element ID
+            id: 'dms_video_2',                      // 생성대상 플레이어의 ID 지정
+            vms_id: '100869',                       // 영상정보: vms_id 
+            dev_serial: '1',                        // 영상정보: dev_serial
+            channel: '0',                           // 영상정보: Channel
+            media: '0',                             // 영상정보: media
+            srcType: 'vurix',                       // 원본소스타입: vurix, realhub
+            protocol: 'http',                       // media server url: 프로토콜 정보, http/https
+            host: 'ca-172-16-36-180.vurix.kr',      // media server url: host 정보, 접속 host url 또는 사용 할 media server host url
+            transcode: 720,                         // 인코딩 요청 값: -1=인코딩 적용 X, 0=원본, [-1, 0을 제외한 최소 값은 32]
+            startDate: 1639895515,                  // 저장영상 재생: 시작 UTC 시간(실시간일 경우 X)
+            endDate: 1639895815,                    // 저장영상 재생: 종료 UTC 시간(실시간일 경우 X)
+            autoPlay: false,                        // 자동재생: true/false
+            snapshot: true,                         // progress bar 마우스 이동 시, 스냅샷 처리 여부
+            capture: true,                          // 화면 캡쳐 버튼 활성화 여부
+            scale: 10,                              // progress bar 아래 scale 표시 여부(scale 눈금 갯수)
+            errorMsgFunc: ((err) => {               // 에러 발생 콜백
+				console.error(err);
+			})
+        };
+
+        const options3 = {
+            parentElementId: 'player3',             // video 태그가 위치 할 부모 element ID
+            id: 'dms_video_3',                      // 생성대상 플레이어의 ID 지정
+            vms_id: '100869',                       // 영상정보: vms_id 
+            dev_serial: '5',                        // 영상정보: dev_serial
+            channel: '0',                           // 영상정보: Channel
+            media: '0',                             // 영상정보: media
+            srcType: 'vurix',                       // 원본소스타입: vurix, realhub
+            protocol: 'http',                       // media server url: 프로토콜 정보, http/https
+            host: 'ca-172-16-36-180.vurix.kr',      // media server url: host 정보, 접속 host url 또는 사용 할 media server host url
+            transcode: 720,                         // 인코딩 요청 값: -1=인코딩 적용 X, 0=원본, [-1, 0을 제외한 최소 값은 32]
+            autoPlay: true,                         // 자동재생: true/false
+            capture: true,                          // 화면 캡쳐 버튼 활성화 여부
+            errorMsgFunc: ((err) => {               // 에러 발생 콜백
+				console.error(err);
+			})
+        };
+        
+        const playerInstance1 = new dmsPlayerComponent.Player(document.getElementById('player1'));
+        playerInstance1.render(options1);
+
+        const playerInstance2 = new dmsPlayerComponent.Player(document.getElementById('player2'));
+        playerInstance2.render(options2);
+
+        const playerInstance3 = new dmsPlayerComponent.Player(document.getElementById('player3'));
+        playerInstance3.render(options3);
+
+        function deleteFunc1() {
+            playerInstance1.destroy();
+        }
+
+        function deleteFunc2() {
+            playerInstance2.destroy();
+        }
+
+        function deleteFunc3() {
+            playerInstance3.destroy();
+        }
+    </script>
+</html>

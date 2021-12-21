@@ -1,0 +1,14 @@
+.vscode
+dist/index.html
+node_modules
+src
+.eslintrc.js
+.gitignore
+.http
+.npmignore
+package-lock.json
+postcss.config.js
+stylelint.config.js
+tsconfig.esm.json
+tsconfig.json
+webpack.config.js
