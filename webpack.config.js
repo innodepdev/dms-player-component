@@ -17,7 +17,7 @@ const BANNER = [
 ].join('\n');
 
 const config = {
-    entry: ['./src/sass/index.scss', './src/ts/index.ts'],
+    entry: ['idempotent-babel-polyfill', './src/sass/index.scss', './src/ts/index.ts'],
     output: {
         library: 'dmsPlayerComponent',          // 라이브러리 네임스페이스 설정
         libraryTarget: 'umd',                   // 라이브러리 타겟 설정

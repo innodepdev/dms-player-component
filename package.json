@@ -70,6 +70,7 @@
     "axios": "^0.24.0",
     "date-fns": "^2.25.0",
     "dms-player": "^1.0.6",
+    "idempotent-babel-polyfill": "^7.4.4",
     "moment": "^2.29.1",
     "preact": "^10.5.14",
     "preact-compat": "^3.19.0",
