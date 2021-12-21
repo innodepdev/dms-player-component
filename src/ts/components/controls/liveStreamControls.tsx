@@ -9,7 +9,6 @@ import { exportImage } from '@src/ts/util/common';
 
 import { FontAwesomeIcon } from '@aduh95/preact-fontawesome';
 import * as FasIcons from '@fortawesome/free-solid-svg-icons';
-import pl from 'date-fns/esm/locale/pl/index.js';
 
 interface LiveStreamControlsProps {
     propsOptions: CreatePlayerOptions;
