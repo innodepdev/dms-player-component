@@ -1,8 +1,8 @@
 # [dms-player-component.js](https://innodep.co.kr/renew/)
 
-[![npm version](https://img.shields.io/npm/v/react-range.svg?style=flat-square)](https://www.npmjs.com/package/dms-player-component)
-[![npm downloads](https://img.shields.io/npm/dm/react-range.svg?style=flat-square)](https://www.npmjs.com/package/dms-player-component)
-[![size](https://img.shields.io/bundlephobia/minzip/react-range.svg?style=flat)](https://bundlephobia.com/result?p=dms-player-component)
+[![npm version](https://img.shields.io/npm/v/dms-player-component.svg?style=flat-square)](https://www.npmjs.com/package/dms-player-component)
+[![npm downloads](https://img.shields.io/npm/dm/dms-player-component.svg?style=flat-square)](https://www.npmjs.com/package/dms-player-component)
+[![size](https://img.shields.io/bundlephobia/minzip/dms-player-component.svg?style=flat)](https://bundlephobia.com/result?p=dms-player-component)
 
 dms-player-component 는 [**이노뎁(주)**](http://www.innodep.com/)의 [dms-player](https://www.npmjs.com/package/dms-player) 영상 연동 모듈을 활용한 preact 기반 컴포넌트 라이브러리 입니다.
 
