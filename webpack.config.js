@@ -5,7 +5,7 @@ const pkg = require('./package.json');
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');          // uglify 플러그인
 const StyleLintPlugin = require('stylelint-webpack-plugin');        // style lint 플러그인
-const HtmlWebpackPlugin = require('html-webpack-plugin');           // 웹팩 html 번들 제공
+// const HtmlWebpackPlugin = require('html-webpack-plugin');           // 웹팩 html 번들 제공
 const DtsBundleWebpack = require('dts-bundle-webpack');             // dts 번들 제공
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -88,14 +88,17 @@ const config = {
             entryOnly: true
         }),
         new StyleLintPlugin(),      // style linting 용
-        new HtmlWebpackPlugin({     // html 파일을 읽어 html 파일을 빌드 처리 해준다.
+        /*
+        new HtmlWebpackPlugin({     // html 파일을 읽어 html 파일을 빌드 처리 해준다. (개발 테스트 용도)
             filename: 'index.html',
             template: './src/test/index.html',
+            inject: false,
             minify: process.env.NODE_ENV === 'production' ? { 
                 collapseWhitespace: true, // 빈칸 제거 
                 removeComments: true      // 주석 제거 
             } : false
         }),
+        */
         new DtsBundleWebpack({
             name: 'dms-player-component',
             main: path.resolve(__dirname, './build/ts/index.d.ts'),

@@ -69,7 +69,7 @@
     "@fortawesome/react-fontawesome": "^0.1.15",
     "axios": "^0.24.0",
     "date-fns": "^2.25.0",
-    "dms-player": "^1.0.5",
+    "dms-player": "^1.0.6",
     "moment": "^2.29.1",
     "preact": "^10.5.14",
     "preact-compat": "^3.19.0",
