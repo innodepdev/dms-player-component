@@ -2,12 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 const pkg = require('./package.json');
 
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');          // uglify 플러그인
 const StyleLintPlugin = require('stylelint-webpack-plugin');        // style lint 플러그인
-// const HtmlWebpackPlugin = require('html-webpack-plugin');           // 웹팩 html 번들 제공
+// const HtmlWebpackPlugin = require('html-webpack-plugin');        // 웹팩 html 번들 제공
 const DtsBundleWebpack = require('dts-bundle-webpack');             // dts 번들 제공
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const BANNER = [
     'DMS VIDEO PLAYER Library',
@@ -41,7 +39,7 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
+                test: /\.(ts|tsx)$/,
                 use: ['ts-loader', 'eslint-loader'],
                 exclude: /node_modules/
             },
@@ -79,7 +77,6 @@ const config = {
         ]
     },
     plugins: [
-        // new CleanWebpackPlugin(),
         new UglifyJSPlugin({
             sourceMap: true
         }),
@@ -105,7 +102,6 @@ const config = {
             baseDir: 'build',
             out: path.resolve(__dirname, './dist/dms-player-component.d.ts'),
         }),
-        // new BundleAnalyzerPlugin()
     ],
     devtool: 'source-map',  // 배포용 빌드 파일과 원본 파일을 연결시켜주는 기능 (디버깅시 필요한 편의성 기능)
     devServer: {    // webpack dev server 설정

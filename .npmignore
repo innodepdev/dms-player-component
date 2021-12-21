@@ -2,6 +2,7 @@
 .git
 dist/index.html
 node_modules/
+build/
 src/
 .eslintrc.js
 .gitignore
