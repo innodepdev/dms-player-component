@@ -1,6 +1,6 @@
 {
   "name": "dms-player-component",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "dist/dms-player-component.js",
   "author": "TMS Platform Team, Ju Seongjin <jsj@innodep.com>",
   "license": "ISC",
@@ -11,6 +11,9 @@
   "keywords": [
     "dms-player-component"
   ],
+  "browserslist": [
+    "defaults"
+  ],
   "scripts": {
     "serve:dev": "webpack --mode development && set DEV_SERVER=true & webpack-dev-server --mode development --hot --open",
     "serve:prod": "webpack --mode production && set DEV_SERVER=true & webpack-dev-server --mode production --hot --open",
@@ -18,16 +21,6 @@
     "build:prod": "set NODE_ENV=production & webpack --mode production",
     "build": "rm -rf dist && npm run build:dev && npm run build:prod"
   },
-  "module": "dist/esm/",
-  "sideEffects": false,
-  "browserslist": [
-    "defaults"
-  ],
-  "files": [
-    "src",
-    "dist",
-    "index.d.ts"
-  ],
   "devDependencies": {
     "@types/react-datepicker": "^4.1.7",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
@@ -68,13 +61,10 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
     "axios": "^0.24.0",
-    "date-fns": "^2.25.0",
     "dms-player": "^1.0.6",
-    "idempotent-babel-polyfill": "^7.4.4",
     "moment": "^2.29.1",
     "preact": "^10.5.14",
     "preact-compat": "^3.19.0",
-    "rc-slider": "^9.7.5",
-    "react-datepicker": "^4.3.0"
+    "rc-slider": "^9.7.5"
   }
 }
