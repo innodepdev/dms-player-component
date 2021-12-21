@@ -1,4 +1,5 @@
 .vscode
+.git
 dist/index.html
 node_modules/
 src/
