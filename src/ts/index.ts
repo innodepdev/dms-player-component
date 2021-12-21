@@ -1,7 +1,13 @@
 import Player from '@ts/player';
 
-export default {
-    Player
+const getVersion = (): void => {
+    console.log('%c dms-player-component Version: %c ' + '1.0.15' + ' ', 'background-color:#000000; color:#fff; font-size:15px;',
+        'background-color:#0068b4; color:#fff; font-size:15px;');
 };
 
-export { Player };
+export default {
+    Player,
+    getVersion
+};
+
+export { Player, getVersion };
