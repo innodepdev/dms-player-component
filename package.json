@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/dms-player-component.js",
-  "author": "Innodep Team TMS Platform",
+  "author": "TMS Platform Team, Ju Seongjin <jsj@innodep.com>",
   "license": "ISC",
   "scripts": {
     "serve:dev": "webpack --mode development && set DEV_SERVER=true & webpack-dev-server --mode development --hot --open",
