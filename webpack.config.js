@@ -2,10 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const pkg = require('./package.json');
 
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const HtmlWebpackPlugin = require('html-webpack-plugin');        // 웹팩 html 번들 제공
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');          // uglify 플러그인
 const StyleLintPlugin = require('stylelint-webpack-plugin');        // style lint 플러그인
-// const HtmlWebpackPlugin = require('html-webpack-plugin');        // 웹팩 html 번들 제공
-const DtsBundleWebpack = require('dts-bundle-webpack');             // dts 번들 제공
+const DtsBundleWebpack = require('dts-bundle-webpack');             // d.ts 번들 제공
 
 const BANNER = [
     'DMS VIDEO PLAYER Library',
@@ -39,7 +41,7 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.(ts|tsx)$/,
+                test: /\.tsx?$/,
                 use: ['ts-loader', 'eslint-loader'],
                 exclude: /node_modules/
             },
@@ -77,14 +79,8 @@ const config = {
         ]
     },
     plugins: [
-        new UglifyJSPlugin({
-            sourceMap: true
-        }),
-        new webpack.BannerPlugin({  // 번들링 시 상단에 라이브러리 정보 배너 추가
-            banner: BANNER,
-            entryOnly: true
-        }),
-        new StyleLintPlugin(),      // style linting 용
+        // new CleanWebpackPlugin(),
+        // new BundleAnalyzerPlugin()
         /*
         new HtmlWebpackPlugin({     // html 파일을 읽어 html 파일을 빌드 처리 해준다. (개발 테스트 용도)
             filename: 'index.html',
@@ -96,12 +92,20 @@ const config = {
             } : false
         }),
         */
+        new UglifyJSPlugin({
+            sourceMap: true
+        }),
+        new webpack.BannerPlugin({  // 번들링 시 상단에 라이브러리 정보 배너 추가
+            banner: BANNER,
+            entryOnly: true
+        }),
+        new StyleLintPlugin(),      // style linting 용
         new DtsBundleWebpack({
             name: 'dms-player-component',
             main: path.resolve(__dirname, './build/ts/index.d.ts'),
             baseDir: 'build',
             out: path.resolve(__dirname, './dist/dms-player-component.d.ts'),
-        }),
+        })
     ],
     devtool: 'source-map',  // 배포용 빌드 파일과 원본 파일을 연결시켜주는 기능 (디버깅시 필요한 편의성 기능)
     devServer: {    // webpack dev server 설정
