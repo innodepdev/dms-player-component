@@ -10,7 +10,6 @@ import { SaveVideoControls } from '@components/controls/saveVideoControls';
 
 import { FontAwesomeIcon } from '@aduh95/preact-fontawesome';
 import * as FasIcons from '@fortawesome/free-solid-svg-icons';
-
 interface PlayerWrapProps {
     options: CreatePlayerOptions;
 }

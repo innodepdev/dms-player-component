@@ -2,14 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const pkg = require('./package.json');
 
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');          // uglify 플러그인
 const StyleLintPlugin = require('stylelint-webpack-plugin');        // style lint 플러그인
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');    // css 별도 추출 플러그인
 const HtmlWebpackPlugin = require('html-webpack-plugin');           // 웹팩 html 번들 제공
-const TypescriptDeclarationPlugin = require('typescript-declaration-webpack-plugin');
+const DtsBundleWebpack = require('dts-bundle-webpack');             // dts 번들 제공
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const isProduction = process.env.NODE_ENV === 'production'; // node 환경 변수 NODE_ENV 에 따라 production mode 사용 여부
-const isDevServer = process.env.DEV_SERVER === 'true';      // node 환경 변수 DEV_SERVER 에 따라 devServer mode 사용 여부
-const FILENAME = pkg.name + (isProduction ? '.min' : '');
 const BANNER = [
     'DMS VIDEO PLAYER Library',
     '@version ' + pkg.version + ' | ' + new Date().toDateString(),
@@ -24,7 +23,7 @@ const config = {
         libraryTarget: 'umd',                   // 라이브러리 타겟 설정
         libraryExport: 'default',               // 엔트리 포인트의 default export를 네임스페이스에 설정하는 옵션
         path: path.join(__dirname, 'dist'),
-        filename: FILENAME + '.js',
+        filename: pkg.name + '.js',
         publicPath: '/dist'
     },
     resolve: {  // 모듈 내에서 사용 하는 import 항목들에 대한 경로 또는 확장자를 처리할 수 있게 도와주는 옵션 
@@ -49,7 +48,6 @@ const config = {
             {
                 test: /\.(s[ac]ss|css)$/i,
                 use: [
-                    // isDevServer ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'style-loader',
                     {
                         loader: 'css-loader',
@@ -81,26 +79,32 @@ const config = {
         ]
     },
     plugins: [
+        // new CleanWebpackPlugin(),
+        new UglifyJSPlugin({
+            sourceMap: true
+        }),
         new webpack.BannerPlugin({  // 번들링 시 상단에 라이브러리 정보 배너 추가
             banner: BANNER,
             entryOnly: true
         }),
         new StyleLintPlugin(),      // style linting 용
-        new MiniCssExtractPlugin({  // css-loader에서 처리한 결과물을 받아 filename 옵션에 적힌 파일명으로 만들어줌.
-            filename: `${FILENAME}.css`
-        }),
         new HtmlWebpackPlugin({     // html 파일을 읽어 html 파일을 빌드 처리 해준다.
             filename: 'index.html',
-            template: './src/test/index.html'
+            template: './src/test/index.html',
+            minify: process.env.NODE_ENV === 'production' ? { 
+                collapseWhitespace: true, // 빈칸 제거 
+                removeComments: true      // 주석 제거 
+            } : false
         }),
-        new TypescriptDeclarationPlugin({   // d.ts 파일 생성
-            out: 'dms-player-component.d.ts'
-        })
+        new DtsBundleWebpack({
+            name: 'dms-player-component',
+            main: path.resolve(__dirname, './build/ts/index.d.ts'),
+            baseDir: 'build',
+            out: path.resolve(__dirname, './dist/dms-player-component.d.ts'),
+        }),
+        // new BundleAnalyzerPlugin()
     ],
     devtool: 'source-map',  // 배포용 빌드 파일과 원본 파일을 연결시켜주는 기능 (디버깅시 필요한 편의성 기능)
-    performance: {          // webpack 번들링 시 waring hint 표출 여부
-        hints: process.env.NODE_ENV === 'production' ? "warning" : false
-    },
     devServer: {    // webpack dev server 설정
         historyApiFallback: false,
         contentBase: './dist',

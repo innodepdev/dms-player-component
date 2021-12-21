@@ -1,9 +1,11 @@
 import { render, JSX } from 'preact';
 import { CreatePlayerOptions } from '@interfaces/player-interface';
 
+import { playerClose } from 'dms-player';
 export default abstract class Base {
     private container: Element;
     private base?: Element;
+    private playerUrl?: string;
 
     public constructor(container: Element) {
         this.container = container;
@@ -12,10 +14,15 @@ export default abstract class Base {
     protected abstract getComponent(options: CreatePlayerOptions): JSX.Element;
 
     public render(options: CreatePlayerOptions): void {
+        this.playerUrl = `${options.srcType}:///${options.vms_id}/${options.dev_serial}/${options.channel}/${options.media}`;
         render(this.getComponent(options), this.container, this.base);
     }
 
     public destroy(): void {
-        render(null, this.container, this.base);
+        const video = this.container.querySelector('video') as HTMLVideoElement;
+        if (video && this.playerUrl) {
+            playerClose(video, this.playerUrl)
+            render(null, this.container, this.base);
+        }
     }
 }
