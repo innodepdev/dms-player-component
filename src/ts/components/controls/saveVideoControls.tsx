@@ -190,11 +190,13 @@ export const SaveVideoControls = (props: SaveVideoControlsProps): JSX.Element =>
     /**
      * 저장 영상 재생
      */
-    const saveVideoPlay = (playDate?: number): void => {
+    const saveVideoPlay = (playOptions?: {date?: number | undefined; speed?: number}): void => {
         if (player) {
             setIsPlay(true);
             refIsPlay.current = true;
-            playbackPlay(player, playDate ? playDate : propsOptions.startDate, propsOptions.endDate, playSpeed);
+            const startDate = playOptions?.date ? playOptions.date : propsOptions.startDate;
+            const speed = playOptions?.speed ? playOptions.speed : playSpeed;
+            playbackPlay(player, startDate, propsOptions.endDate, speed);
             startTimeEvent(player);
         }
     };
@@ -275,6 +277,7 @@ export const SaveVideoControls = (props: SaveVideoControlsProps): JSX.Element =>
                         onChangeCurrentDate={onChangeCurrentDate}
                         saveVideoPause={saveVideoPause}
                         saveVideoPlay={saveVideoPlay}
+                        propsPlaySpeed={playSpeed}
                     />
                 :   null
             }
@@ -285,7 +288,7 @@ export const SaveVideoControls = (props: SaveVideoControlsProps): JSX.Element =>
                         ? <button className="ltr-btn" onClick={() => saveVideoPause()} aria-label="저장 영상 정지">
                             <FontAwesomeIcon className="icon-btn" icon={FasIcons['faPause']} />
                         </button>
-                        : <button className="ltr-btn" onClick={() => saveVideoPlay(currentDate)} aria-label="저장 영상 재생">
+                        : <button className="ltr-btn" onClick={() => saveVideoPlay({date: currentDate})} aria-label="저장 영상 재생">
                             <FontAwesomeIcon className="icon-btn" icon={FasIcons['faPlay']} />
                         </button>
                     }

@@ -16,17 +16,20 @@ interface SaveVideoProgressBarProps {
     currentDate: number | undefined;
     clearTimeEvent: () => void;
     onChangeCurrentDate: (changeDate: number) => void;
-    saveVideoPlay: (playDate?: number) => void;
+    saveVideoPlay: (playOption: {date: number|undefined; speed: number}) => void;
     saveVideoPause: () => void;
+    propsPlaySpeed: number;
 }
 
 export const SaveVideoProgressBar = (props: SaveVideoProgressBarProps): JSX.Element => {
-    const {propsOptions, currentDate, clearTimeEvent, onChangeCurrentDate, saveVideoPlay, saveVideoPause} = props;
+    const {propsOptions, currentDate, clearTimeEvent, onChangeCurrentDate, saveVideoPlay, saveVideoPause, propsPlaySpeed} = props;
     const [playDate, setPlayDate] = useState(currentDate);
+    const [playSpeed, setPlaySpeed] = useState(propsPlaySpeed);
     const [scaleArray, setScaleArray] = useState({});
     const [snapShotUrl, setSnapShotUrl] = useState<string>();
 
     const refPlayDate = useRef(playDate);       // 이벤트 리스너 콜백에서 변경된 date state 값을 가져오기 위한 ref 객체
+    const refPlaySpeed = useRef(playSpeed);
 
     const httpService = NewHttpInterface();     // http service 객체 생성
     
@@ -45,6 +48,11 @@ export const SaveVideoProgressBar = (props: SaveVideoProgressBarProps): JSX.Elem
             saveVideoPause();
         }
     }, [currentDate]);
+
+    useEffect(() => {
+        setPlaySpeed(propsPlaySpeed);
+        refPlaySpeed.current = propsPlaySpeed;
+    }, [propsPlaySpeed]);
 
     /**
      * scale 화면 표시 처리
@@ -72,7 +80,11 @@ export const SaveVideoProgressBar = (props: SaveVideoProgressBarProps): JSX.Elem
     const sliderChangeCallback = () => {
         clearTimeEvent();
         saveVideoPause();
-        saveVideoPlay(refPlayDate.current);
+        const playOption = {
+            date: refPlayDate.current,
+            speed: refPlaySpeed.current
+        };
+        saveVideoPlay(playOption);
         window.removeEventListener('mouseup', sliderChangeCallback);
     };
 
