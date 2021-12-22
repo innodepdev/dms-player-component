@@ -1,5 +1,5 @@
-import { HttpInterface } from './http-interface';
-import axios, { AxiosError } from 'axios';
+import {HttpInterface} from './http-interface';
+import axios, { AxiosError} from 'axios';
 
 const HTTP_REQUEST_TIMEOUT = 12000; // HTTP timeout 시간 설정
 

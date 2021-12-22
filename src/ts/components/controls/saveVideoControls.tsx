@@ -24,6 +24,7 @@ export const SaveVideoControls = (props: SaveVideoControlsProps): JSX.Element =>
     
     const [player, setPlayer] = useState<HTMLVideoElement|null>(null);
     const [playUrl, setPlayUrl] = useState('');
+    const [playSpeed, setPlaySpeed] = useState(10);
     const [isPlay, setIsPlay] = useState<boolean|undefined>(propsOptions.autoPlay);
     const [isFullScreen, setIsFullScreen] = useState(false);
     const [playTimeInterval, setPlayTimeInterval] = useState(0);
@@ -63,6 +64,11 @@ export const SaveVideoControls = (props: SaveVideoControlsProps): JSX.Element =>
             setPlayUrl(propsPlayUrl);
         }
     }, [propsPlayUrl]);
+
+    useEffect(() => {
+        saveVideoPause();
+        saveVideoPlay();
+    }, [playSpeed]);
 
     useEffect(() => {
         if (propsDisplayClickPlay) {
@@ -123,6 +129,7 @@ export const SaveVideoControls = (props: SaveVideoControlsProps): JSX.Element =>
      * 저장 영상 progressbar 처리용, intervar time event 시작
      */
     const startTimeEvent = (player: HTMLVideoElement): void => {
+        const intervalSpeed = 1000 / (playSpeed / 10);
         playingHandler = (): void =>{
             if(!playing) {
                 playing = true;
@@ -136,7 +143,7 @@ export const SaveVideoControls = (props: SaveVideoControlsProps): JSX.Element =>
                                 return currentDate;
                             }
                         });
-                    }, 1000)
+                    }, intervalSpeed)
                 );
             }
         }
@@ -187,8 +194,23 @@ export const SaveVideoControls = (props: SaveVideoControlsProps): JSX.Element =>
         if (player) {
             setIsPlay(true);
             refIsPlay.current = true;
-            playbackPlay(player, playDate ? playDate : propsOptions.startDate, propsOptions.endDate);
+            playbackPlay(player, playDate ? playDate : propsOptions.startDate, propsOptions.endDate, playSpeed);
             startTimeEvent(player);
+        }
+    };
+
+    const setIncreasePlaySpeed = (): void => {
+        switch (playSpeed) {
+            case 10: 
+                setPlaySpeed(20);
+                break;
+            case 20: 
+                setPlaySpeed(40);
+                break;
+            case 40: 
+                setPlaySpeed(10);
+                break;
+            default: break;
         }
     };
 
@@ -267,13 +289,19 @@ export const SaveVideoControls = (props: SaveVideoControlsProps): JSX.Element =>
                             <FontAwesomeIcon className="icon-btn" icon={FasIcons['faPlay']} />
                         </button>
                     }
+                    <button className="ltr-btn" style={{fontSize: '1.8em'}} onClick={() => setIncreasePlaySpeed()} aria-label="저장 영상 배속 재생">
+                        <FontAwesomeIcon className="icon-btn" icon={FasIcons['faAngleDoubleRight']} />
+                    </button>
                     {
                         propsOptions.capture
-                        ?   <button className="ltr-btn" onClick={() => getVideoCaptureImage(player)} aria-label="저장 영상 캡쳐">
-                                <FontAwesomeIcon className="icon-btn" icon={FasIcons['faDownload']} />
-                            </button>
-                        :   null
+                        ? <button className="ltr-btn" onClick={() => getVideoCaptureImage(player)} aria-label="저장 영상 캡쳐">
+                            <FontAwesomeIcon className="icon-btn" icon={FasIcons['faDownload']} />
+                          </button>
+                        : null
                     }
+                    <div className="play-speed">
+                        x{(playSpeed / 10).toFixed(1)}
+                    </div>
                 </div>
                 <div className="center-controls control-box">
                     {utcToDateString(currentDate)} / {utcToDateString(propsOptions.endDate)}

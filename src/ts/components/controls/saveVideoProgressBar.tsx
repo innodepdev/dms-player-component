@@ -1,16 +1,15 @@
 import './saveVideoProgressBar.scss';
-import { h, JSX } from 'preact';
-import { useEffect, useState, useRef } from 'preact/hooks';
+import {h, JSX} from 'preact';
+import {useEffect, useState, useRef} from 'preact/hooks';
 
-import { CreatePlayerOptions } from '@interfaces/player-interface';
-import { NewHttpInterface } from '@service/http-interface';
+import {CreatePlayerOptions} from '@interfaces/player-interface';
+import {NewHttpInterface} from '@service/http-interface';
 
 import moment from 'moment';
 
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import { utcToDateString } from '@src/ts/util/common';
-
+import {utcToDateString} from '@src/ts/util/common';
 
 interface SaveVideoProgressBarProps {
     propsOptions: CreatePlayerOptions;
@@ -138,8 +137,9 @@ export const SaveVideoProgressBar = (props: SaveVideoProgressBarProps): JSX.Elem
     };
 
     const getSnapShot = async(dateTime: number) => {
-        const cctvId = `${propsOptions.vms_id}/${propsOptions.dev_serial}/${propsOptions.channel}/${propsOptions.media}`;
-        const url = `/media/api/v1/snapshot/${propsOptions.srcType}/${cctvId}/${480}?time=${dateTime}`;
+        const splitUrl = propsOptions.url.split(':///');
+        const cctvId = splitUrl[1];
+        const url = `/media/api/v1/snapshot/${splitUrl[0]}/${cctvId}/${480}?time=${dateTime}`;
         const res = await httpService?.getSnapShot(url);
         if (res) {
             const reader = new FileReader();

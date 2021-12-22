@@ -1,7 +1,7 @@
-import { render, JSX } from 'preact';
-import { CreatePlayerOptions } from '@interfaces/player-interface';
+import {render, JSX} from 'preact';
+import {CreatePlayerOptions} from '@interfaces/player-interface';
 
-import { playerClose } from 'dms-player';
+import {playerClose} from 'dms-player';
 export default abstract class Base {
     private container: Element;
     private base?: Element;
@@ -14,7 +14,7 @@ export default abstract class Base {
     protected abstract getComponent(options: CreatePlayerOptions): JSX.Element;
 
     public render(options: CreatePlayerOptions): void {
-        this.playerUrl = `${options.srcType}:///${options.vms_id}/${options.dev_serial}/${options.channel}/${options.media}`;
+        this.playerUrl = options.url;
         render(this.getComponent(options), this.container, this.base);
     }
 

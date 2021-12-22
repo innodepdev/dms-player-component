@@ -84,12 +84,7 @@ const config = {
         /*
         new HtmlWebpackPlugin({     // html 파일을 읽어 html 파일을 빌드 처리 해준다. (개발 테스트 용도)
             filename: 'index.html',
-            template: './src/test/index.html',
-            inject: false,
-            minify: process.env.NODE_ENV === 'production' ? { 
-                collapseWhitespace: true, // 빈칸 제거 
-                removeComments: true      // 주석 제거 
-            } : false
+            template: './src/test/index.html'
         }),
         */
         new UglifyJSPlugin({
@@ -107,7 +102,6 @@ const config = {
             out: path.resolve(__dirname, './dist/dms-player-component.d.ts'),
         })
     ],
-    devtool: 'source-map',  // 배포용 빌드 파일과 원본 파일을 연결시켜주는 기능 (디버깅시 필요한 편의성 기능)
     devServer: {    // webpack dev server 설정
         historyApiFallback: false,
         contentBase: './dist',

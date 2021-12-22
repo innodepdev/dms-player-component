@@ -63,12 +63,11 @@ export const PlayerWrap = (props: PlayerWrapProps): JSX.Element => {
 
     const initPlayerOptions = (): initPlayerOptions => {
         const protocol = options.protocol === 'http' ? 'ws://' : 'wss://';
-        const url = `${options.srcType}:///${options.vms_id}/${options.dev_serial}/${options.channel}/${options.media}`;
-        setPlayUrl(url);
+        setPlayUrl(options.url);
         return {
-            id: props.options.id,
-            url,
-            srcType: options.srcType,
+            id: options.id,
+            url: options.url,
+            srcType: options.url.split(':///')[0],
             stream: `${protocol}${options.host}/media/api/v1/stream`,
             transcode: options.transcode,
             errorMsgFunc: ((err) => {

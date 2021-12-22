@@ -20,7 +20,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: .3em 1em;
+        padding: .3em .8em 0 .8em;
         .control-box {
             flex: 1 1;
             text-align: center;
@@ -28,12 +28,10 @@
             &.left-controls {
                 display: flex;
                 justify-content: flex-start;
-                gap: .6em;
             }
             &.right-controls {
                 display: flex;
                 justify-content: flex-end;
-                gap: .6em;
                 .expand-screen-btn:hover {
                     animation-name: 'expandScreenScale';
                     animation-duration: 0.8s;
@@ -46,6 +44,7 @@
                 }
             }
             .ltr-btn {
+                width: 42px;
                 font-size: 1.5em;
                 background-color: transparent;
                 border-radius: 0.2rem;

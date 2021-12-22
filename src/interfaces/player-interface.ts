@@ -1,11 +1,7 @@
 export interface CreatePlayerOptions {
 	parentElementId: string;
 	id: string;
-	vms_id: string;
-	dev_serial: string;
-	channel: string;
-	media: string;
-	srcType: string;
+	url: string;
 	protocol: string;
 	host: string;
 	transcode: number;
