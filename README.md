@@ -37,32 +37,35 @@ const dmsPlayerComponent = require('dms-player-component');
 ...
 
 // create player component
-const options = {
-  parentElementId: 'player',              // video 태그가 위치 할 부모 element ID
-  id: 'dms_video_1',                      // 생성대상 플레이어의 ID 지정
-  vms_id: '100111',                       // 영상정보: vms_id 
-  dev_serial: '1',                        // 영상정보: dev_serial
-  channel: '0',                           // 영상정보: Channel
-  media: '0',                             // 영상정보: media
-  srcType: 'vurix',                       // 원본소스타입: vurix, realhub
-  protocol: 'http',                       // media server url: 프로토콜 정보, http/https
-  host: 'ca-172-16-36-180.vurix.kr',      // media server url: host 정보, 접속 host url 또는 사용 할 media server host url
-  transcode: 720,                         // 인코딩 요청 값: -1=인코딩 적용 X, 0=원본, [-1, 0을 제외한 최소 값은 32]
-  startDate: 1639618920,                  // 저장영상 재생: 시작 UTC 시간(실시간일 경우 X)
-  endDate: 1639619520,                    // 저장영상 재생: 종료 UTC 시간(실시간일 경우 X)
-  autoPlay: true,                         // 자동재생: true/false
-  snapshot: true,                         // progress bar 마우스 이동 시, 스냅샷 처리 여부
-  capture: true,                          // 화면 캡쳐 버튼 활성화 여부
-  searchDate: true,                       // 저장영상 검색 기능(미구현)
-  scale: 10,                              // progress bar 아래 scale 표시 여부(scale 눈금 갯수)
-  errorMsgFunc: ((err) => {               // 에러 발생 콜백
-    console.error(err);
-  })
+const options1 = {
+    parentElementId: 'player1',
+    id: 'dms_video_1',
+    url: 'vurix:///100869/1/0/0',
+    protocol: 'http',
+    host: 'ca-172-16-36-180.vurix.kr',
+    transcode: 720
 };
-  
-const playerInstance = new dmsPlayerComponent.Player(document.getElementById('player'));
+
+const playerInstance = new dmsPlayerComponent.Player(document.getElementById('player1'));
 playerInstance.render(options1);
   
 // remove player component
 playerInstance.destroy();
 ```
+- Options
+| Name         | Type    | Default | Description |
+| ------------ | ------- | ------- | ----------- |
+| parentElementId | string |  | video 태그가 위치 할 부모 `HTML Element ID` |
+| id | string |  | 생성 대상 Player `ID` 지정 |
+| url | string |  | vurix or realhub(원본소스타입) -> `///[vms_id]/[dev_serial]/[channel]/[media]`  |
+| protocol | string |  | 프로토콜 정보, `http` or `https` |
+| host | string |  | Host 정보, 접속 Host URL 또는 사용 할 Media Server Host URL |
+| transcode | number |  | 인코딩 요청 값, `-1`=인코딩 적용 X, `0`=원본, `-1, 0을 제외한 최소 값은 32` |
+| startDate | number |  | 저장 영상 요청 시작 `utc datetime` (실시간 재생 시 옵션 적용 X ) |
+| endDate | number |  | 저장 영상 요청 종료 `utc datetime` (실시간 재생 시 옵션 적용 X )|
+| autoPlay | boolean | `false` | 자동 재생 여부 |
+| playSpeed | number | `1` | 저장 영상 배속 옵션, 해당 옵션이 없을 경우, 배속 버튼도 표시 되지 않으며 세가지 옵션 제공 `1, 2(2배속), 4(4배속)`
+| capture | boolean | `false` | 화면 캡쳐 버튼 활성화 여부 |
+| scale | number | | 저장영상 구간 눈금 표시 여부 및 눈금 표시 갯수 |
+| buttonTooltip | boolean | `false` | 플레이어 컨트롤 영역 버튼 `Tooltip` 표시 여부 |
+| errorMsgFunc | Function |  | 에러 발생 `콜백` 함수 |

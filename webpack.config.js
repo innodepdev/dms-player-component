@@ -4,7 +4,7 @@ const pkg = require('./package.json');
 
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-// const HtmlWebpackPlugin = require('html-webpack-plugin');        // 웹팩 html 번들 제공
+const HtmlWebpackPlugin = require('html-webpack-plugin');        // 웹팩 html 번들 제공
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');          // uglify 플러그인
 const StyleLintPlugin = require('stylelint-webpack-plugin');        // style lint 플러그인
 const DtsBundleWebpack = require('dts-bundle-webpack');             // d.ts 번들 제공
@@ -30,6 +30,7 @@ const config = {
         extensions: ['.ts', '.tsx', '.js', '.jsx'], // 탐색할 모듈의 확장자 지정
         alias: {                                    // 모듈의 경로 사용자 정의 지정, import XXX from '@src/xxx';
             '@src': path.resolve(__dirname, './src/'),
+            "@assets":  path.resolve(__dirname, './src/assets/'),
             '@ts': path.resolve(__dirname, './src/ts/'),
             '@interfaces': path.resolve(__dirname, './src/interfaces/'),
             '@components': path.resolve(__dirname, './src/ts/components'),
@@ -57,12 +58,12 @@ const config = {
                     },
                     { 
                         loader: "postcss-loader",
-                            options: {
-                                postcssOptions: {
-                                    config: path.resolve(__dirname, 'postcss.config.js')
-                                },
-                                sourceMap: true,
-                            }
+                        options: {
+                            postcssOptions: {
+                                config: path.resolve(__dirname, 'postcss.config.js')
+                            },
+                            sourceMap: true,
+                        }
                     },
                     {
                         loader: 'sass-loader',
@@ -73,7 +74,7 @@ const config = {
                 ]
               },
               {
-                test: /\.(gif|png|jpe?g)$/,
+                test: /\.(ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 use: 'url-loader'
               }
         ]
@@ -81,12 +82,10 @@ const config = {
     plugins: [
         // new CleanWebpackPlugin(),
         // new BundleAnalyzerPlugin()
-        /*
         new HtmlWebpackPlugin({     // html 파일을 읽어 html 파일을 빌드 처리 해준다. (개발 테스트 용도)
             filename: 'index.html',
-            template: './src/test/index.html'
+            template: './src/index.html'
         }),
-        */
         new UglifyJSPlugin({
             sourceMap: true
         }),

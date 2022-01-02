@@ -9,10 +9,12 @@ export interface CreatePlayerOptions {
 	startDate?: number;
 	endDate?: number;
 	autoPlay?: boolean;
+	playSpeed?: number;
 	snapshot?: boolean;
 	capture?: boolean;
 	searchDate?: boolean;
 	scale?: number;
+	buttonTooltip?: boolean;
 }
 
 export interface IErrorMsg {

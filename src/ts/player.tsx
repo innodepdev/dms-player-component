@@ -3,7 +3,7 @@ import Base from '@ts/base';
 
 import {CreatePlayerOptions} from '@interfaces/player-interface';
 
-import {PlayerWrap} from '@ts/components/playerWrap';
+import {PlayerWrap} from '@src/ts/components/player-wrap';
 
 class Player extends Base {
 	protected getComponent(options: CreatePlayerOptions): JSX.Element {
