@@ -52,7 +52,8 @@ playerInstance.render(options1);
 // remove player component
 playerInstance.destroy();
 ```
-- Options
+### Common API
+
 | Name         | Type    | Default | Description |
 | ------------ | ------- | ------- | ----------- |
 | parentElementId | string |  | video 태그가 위치 할 부모 `HTML Element ID` |
