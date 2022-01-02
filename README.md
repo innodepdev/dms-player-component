@@ -27,7 +27,7 @@ import dmsPlayerComponent from 'dms-player-component';
 ``` sh
 const dmsPlayerComponent = require('dms-player-component');
 ```
-
+#### Examples
 ```js
 ...
 <body>
