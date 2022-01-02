@@ -56,12 +56,12 @@ playerInstance.destroy();
 
 | Name         | Type    | Default | Description |
 | ------------ | ------- | ------- | ----------- |
-| parentElementId | string |  | (필수) video 태그가 위치 할 부모 `HTML Element ID` |
-| id | string |  | (필수) 생성 대상 Player `ID` 지정 |
-| url | string |  | (필수) vurix or realhub(원본소스타입) -> `///[vms_id]/[dev_serial]/[channel]/[media]`  |
-| protocol | string |  | (필수) 프로토콜 정보, `http` or `https` |
-| host | string |  | (필수) Host 정보, 접속 Host URL 또는 사용 할 Media Server Host URL |
-| transcode | number |  | (필수) 인코딩 요청 값, `-1`=인코딩 적용 X, `0`=원본, `-1, 0을 제외한 최소 값은 32` |
+| parentElementId | string |  | `필수 값` video 태그가 위치 할 부모 `HTML Element ID` |
+| id | string |  | `필수 값` 생성 대상 Player `ID` 지정 |
+| url | string |  | `필수 값` vurix or realhub(원본소스타입) -> `///[vms_id]/[dev_serial]/[channel]/[media]`  |
+| protocol | string |  | `필수 값` 프로토콜 정보, `http` or `https` |
+| host | string |  | `필수 값` Host 정보, 접속 Host URL 또는 사용 할 Media Server Host URL |
+| transcode | number |  | `필수 값` 인코딩 요청 값, `-1`=인코딩 적용 X, `0`=원본, `-1, 0을 제외한 최소 값은 32` |
 | startDate | number |  | 저장 영상 요청 시작 `utc datetime` (실시간 재생 시 옵션 적용 X ) |
 | endDate | number |  | 저장 영상 요청 종료 `utc datetime` (실시간 재생 시 옵션 적용 X )|
 | autoPlay | boolean | `false` | 자동 재생 여부 |
