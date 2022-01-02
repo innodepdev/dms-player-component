@@ -19,11 +19,11 @@ $ npm install --save dms-player-component@<version> # Specific Version
 
 ## Usage
 
-- ES6 Modules
+#### ES6 Modules
 ``` sh
 import dmsPlayerComponent from 'dms-player-component';
 ```
-- CommonJS
+#### CommonJS
 ``` sh
 const dmsPlayerComponent = require('dms-player-component');
 ```
@@ -52,7 +52,7 @@ playerInstance.render(options);
 // remove player component
 playerInstance.destroy();
 ```
-### Common API
+#### Common API
 
 | Name         | Type    | Default | Description |
 | ------------ | ------- | ------- | ----------- |
