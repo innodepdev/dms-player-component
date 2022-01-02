@@ -37,8 +37,8 @@ const dmsPlayerComponent = require('dms-player-component');
 ...
 
 // create player component
-const options1 = {
-    parentElementId: 'player1',
+const options = {
+    parentElementId: 'player',
     id: 'dms_video_1',
     url: 'vurix:///100869/1/0/0',
     protocol: 'http',
@@ -46,8 +46,8 @@ const options1 = {
     transcode: 720
 };
 
-const playerInstance = new dmsPlayerComponent.Player(document.getElementById('player1'));
-playerInstance.render(options1);
+const playerInstance = new dmsPlayerComponent.Player(document.getElementById('player'));
+playerInstance.render(options);
   
 // remove player component
 playerInstance.destroy();
@@ -56,12 +56,12 @@ playerInstance.destroy();
 
 | Name         | Type    | Default | Description |
 | ------------ | ------- | ------- | ----------- |
-| parentElementId | string | `required value` | video 태그가 위치 할 부모 `HTML Element ID` |
-| id | string | `required value` | 생성 대상 Player `ID` 지정 |
-| url | string | `required value` | vurix or realhub(원본소스타입) -> `///[vms_id]/[dev_serial]/[channel]/[media]`  |
-| protocol | string | `required value` | 프로토콜 정보, `http` or `https` |
-| host | string | `required value` | Host 정보, 접속 Host URL 또는 사용 할 Media Server Host URL |
-| transcode | number | `required value` | 인코딩 요청 값, `-1`=인코딩 적용 X, `0`=원본, `-1, 0을 제외한 최소 값은 32` |
+| parentElementId | string | `required` | video 태그가 위치 할 부모 `HTML Element ID` |
+| id | string | `required` | 생성 대상 Player `ID` 지정 |
+| url | string | `required` | vurix or realhub(원본소스타입) -> `///[vms_id]/[dev_serial]/[channel]/[media]`  |
+| protocol | string | `required` | 프로토콜 정보, `http` or `https` |
+| host | string | `required` | Host 정보, 접속 Host URL 또는 사용 할 Media Server Host URL |
+| transcode | number | `required` | 인코딩 요청 값, `-1`=인코딩 적용 X, `0`=원본, `-1, 0을 제외한 최소 값은 32` |
 | startDate | number |  | 저장 영상 요청 시작 `utc datetime` (실시간 재생 시 옵션 적용 X ) |
 | endDate | number |  | 저장 영상 요청 종료 `utc datetime` (실시간 재생 시 옵션 적용 X )|
 | autoPlay | boolean | `false` | 자동 재생 여부 |
