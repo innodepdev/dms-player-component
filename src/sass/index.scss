@@ -1,6 +1,10 @@
 body {
     box-sizing: border-box;
     color: #fff;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
 }
 
 // media query

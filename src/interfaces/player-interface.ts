@@ -5,7 +5,7 @@ export interface CreatePlayerOptions {
 	protocol: string;
 	host: string;
 	transcode: number;
-	errorMsgFunc?: (err: IErrorMsg | boolean) => void;
+	ptz?: boolean;
 	startDate?: number;
 	endDate?: number;
 	autoPlay?: boolean;
@@ -15,6 +15,7 @@ export interface CreatePlayerOptions {
 	searchDate?: boolean;
 	scale?: number;
 	buttonTooltip?: boolean;
+	errorMsgFunc?: (err: IErrorMsg | boolean) => void;
 }
 
 export interface IErrorMsg {
