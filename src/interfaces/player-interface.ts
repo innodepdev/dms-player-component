@@ -15,6 +15,7 @@ export interface CreatePlayerOptions {
 	searchDate?: boolean;
 	scale?: number;
 	buttonTooltip?: boolean;
+	visiblePlayType?: boolean;
 	errorMsgFunc?: (err: IErrorMsg | boolean) => void;
 }
 

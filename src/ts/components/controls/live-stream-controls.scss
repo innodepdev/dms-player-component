@@ -1,0 +1,135 @@
+.dms-player-live-stream-contorl {
+    z-index: 1000;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+    padding-bottom: .3em;
+    .btn-tooltip {
+        display: none;
+        position: absolute;
+        top: -2.5em;
+        width: auto;
+        max-width: 300px;
+        font-size: .6em;
+        background: rgba(28, 28, 28, 0.9);
+        padding: 5px 9px;
+        border-radius: 2px;
+        text-align: center;
+    }
+    &.fade-in {
+        opacity: 1;
+        visibility: visible;
+        transition: visibility 0s linear 0s, opacity 700ms;
+    }
+    &.fade-out {
+        opacity: 0;
+        visibility: hidden;
+        transition: visibility 1s linear 1s, opacity 1s;
+    }
+    .control-box-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: .3em .5em 0 .5em;
+        .control-box {
+            display: flex;
+            flex: 1 1;
+            text-align: center;
+            font-size: 1.2em;
+            &.left-controls {
+                justify-content: flex-start;
+                .ptz-list-wrap {
+                    font-size: .6em;
+                    position: absolute;
+                    top: -9.5em;
+                    display: none;
+                    background: transparent;
+                    border-radius: 2px;
+                    text-align: center;
+                    ul {
+                        padding: 0;
+                        margin: 0;
+                        list-style: none;
+                        li {
+                            cursor: pointer;
+                            padding: 0.5em .8em;
+                            background: rgba(28,28,28,0.9);
+                            text-align: left;
+                            span {
+                                display: inline-block;
+                            }
+                            &:hover {
+                                background: #0068b4;
+                            }
+                            &:active {
+                                > span {
+                                    transform: translateY(1px);
+                                }
+                            }
+                        }
+                    }
+                }
+                .play-live, .play-ptz {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: .6em;
+                    margin-left: 10px;
+                    .play-live-badge {
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        background: #ff0000;
+                        margin-right: 5px;
+                    }
+                    .play-ptz-badge {
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        background: #079b1b;
+                        margin-right: 5px;
+                    }
+                }
+            }
+            &.center-controls {
+                justify-content: center;
+                .tag {
+                    font-size: .7em;
+                    background: #0068b4;
+                    cursor: default;
+                    height: 25px;
+                    line-height: 25px;
+                    padding: 0 8px;
+                    display: inline-block;
+                    vertical-align: top;
+                    margin-right: 3px;
+                }
+            }
+            &.right-controls {
+                justify-content: flex-end;
+            }
+            .control-btn {
+                width: 38px;
+                height: 38px;
+                border: none;
+                cursor: pointer;
+                background: transparent;
+                opacity: .6;
+                padding: .5em;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: fill;
+                }
+                &:hover {
+                    opacity: 1;
+                }
+                &:active {
+                    transform: translateY(1px);
+                }
+            }
+        }
+    }
+}

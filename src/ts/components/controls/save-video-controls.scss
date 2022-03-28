@@ -1,0 +1,100 @@
+.dms-player-save-video-contorl {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+    padding-bottom: .3em;
+    .btn-tooltip {
+        display: none;
+        position: absolute;
+        top: -2.5em;
+        width: auto;
+        max-width: 300px;
+        font-size: .6em;
+        background: rgba(28, 28, 28, 0.9);
+        padding: 5px 9px;
+        border-radius: 2px;
+        text-align: center;
+    }
+    &.fade-in {
+        opacity: 1;
+        visibility: visible;
+        transition: visibility 0s linear 0s, opacity 700ms;
+    }
+    &.fade-out {
+        opacity: 0;
+        visibility: hidden;
+        transition: visibility 1s linear 1s, opacity 1s;
+    }
+    .control-box-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: .3em .8em 0 .8em;
+        .control-box {
+            display: flex;
+            flex: 1 1;
+            text-align: center;
+            font-size: 1.2em;
+            &.left-controls {
+                justify-content: flex-start;
+                .play-save {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: .6em;
+                    margin-left: 10px;
+                    .play-save-badge {
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        background: #ff0000;
+                        margin-right: 5px;
+                    }
+                }
+            }
+            &.center-controls {
+                justify-content: center;
+                font-size: 1em;
+                color: #fff;
+            }
+            &.right-controls {
+                justify-content: flex-end;
+            }
+            .control-btn {
+                width: 38px;
+                height: 38px;
+                border: none;
+                cursor: pointer;
+                background: transparent;
+                opacity: .6;
+                padding: .5em;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: fill;
+                }
+                &:hover {
+                    opacity: 1;
+                }
+                &:active {
+                    transform: translateY(1px);
+                }
+            }
+            .play-speed {
+                width: 38px;
+                font-size: .7em;
+                background-color: transparent;
+                color: #fff;
+                margin: 0px;
+                padding: 0px;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}

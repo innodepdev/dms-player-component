@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "dms-player": "^1.0.8",
+    "dms-player": "^1.0.13",
     "moment": "^2.29.1",
     "preact": "^10.5.14",
     "preact-compat": "^3.19.0",

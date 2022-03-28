@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="24"
+   viewBox="0 0 24 24"
+   width="24"
+   fill="#fff"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="saarchDate.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     fit-margin-top="2"
+     fit-margin-left="2"
+     fit-margin-bottom="2"
+     fit-margin-right="2"
+     inkscape:zoom="16"
+     inkscape:cx="-3.03125"
+     inkscape:cy="16.46875"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <path
+     d="M 0,0 H 24 V 24 H 0 Z"
+     fill="none"
+     id="path2"
+     style="stroke-width:0.999996" />
+  <path
+     d="m 8.9999995,11 h -2 v 2 h 2 z M 13,11 h -2 v 2 h 2 z m 4,0 h -2 v 2 h 2 z M 21,4 H 18 V 2 H 16 V 4 H 7.9999995 V 2 h -2 v 2 h -3 V 22 H 21 Z M 19,20 H 4.9999995 V 9 H 19 Z"
+     id="path4"
+     style="stroke-width:0.999996" />
+</svg>
