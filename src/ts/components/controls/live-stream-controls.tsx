@@ -91,7 +91,7 @@ export const LiveStreamControls = (props: LiveStreamControlsProps): JSX.Element 
                 const target = e.target as HTMLButtonElement;
                 const ariaLabel = target.ariaLabel;
                 tooltip.style.display = 'block';
-                tooltip.innerText = ariaLabel;
+                tooltip.innerText = ariaLabel ? ariaLabel : '';
 
                 const calcLeft = Number(`${target.offsetLeft + target.clientWidth / 2 - tooltip.clientWidth / 2}`);
                 const calcRight = Number(`${target.offsetLeft + target.clientWidth + target.clientWidth / 2}`);

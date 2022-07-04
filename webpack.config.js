@@ -2,8 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const pkg = require('./package.json');
 
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');        // 웹팩 html 번들 제공
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');          // uglify 플러그인
 const StyleLintPlugin = require('stylelint-webpack-plugin');        // style lint 플러그인
@@ -80,8 +80,8 @@ const config = {
         ]
     },
     plugins: [
-        // new CleanWebpackPlugin(),
-        // new BundleAnalyzerPlugin()
+        new CleanWebpackPlugin(),
+        new BundleAnalyzerPlugin(),
         new HtmlWebpackPlugin({     // html 파일을 읽어 html 파일을 빌드 처리 해준다. (개발 테스트 용도)
             filename: 'index.html',
             template: './src/index.html'
