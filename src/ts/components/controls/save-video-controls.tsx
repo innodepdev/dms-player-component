@@ -99,7 +99,7 @@ export const SaveVideoControls = (props: SaveVideoControlsProps): JSX.Element =>
         ctrlBtns.forEach((btn: Node) => {
             (btn as HTMLButtonElement).addEventListener('mouseenter', (e: MouseEvent) => {
                 const target = e.target as HTMLButtonElement;
-                const ariaLabel = target.ariaLabel;
+                const ariaLabel = target.ariaLabel as string;
                 tooltip.style.display = 'block';
                 tooltip.innerText = ariaLabel;
 

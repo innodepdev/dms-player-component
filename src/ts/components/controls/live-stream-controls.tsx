@@ -270,7 +270,7 @@ export const LiveStreamControls = (props: LiveStreamControlsProps): JSX.Element 
      */
     const toggleButtonPtzControl = (e: MouseEvent): void => {
         const target = e.currentTarget as HTMLButtonElement;
-        const ariaLabel = target.ariaLabel;
+        const ariaLabel = target.ariaLabel as string;
         if (player && playUrl) {
             if (onPtz === ariaLabel) {
                 ptzModeOff(player, playUrl)
@@ -292,7 +292,7 @@ export const LiveStreamControls = (props: LiveStreamControlsProps): JSX.Element 
     const toggleDragPtzControl = (e: MouseEvent): void => {
         removePtzCanvas();
         const target = e.currentTarget as HTMLButtonElement;
-        const ariaLabel = target.ariaLabel;
+        const ariaLabel = target.ariaLabel as string;
         if (player && playUrl) {
             if (onPtz === ariaLabel) {
                 setOnPtz(false);
@@ -311,7 +311,7 @@ export const LiveStreamControls = (props: LiveStreamControlsProps): JSX.Element 
     const toggleAreaPtzControl = (e: MouseEvent): void => {
         removePtzCanvas();
         const target = e.currentTarget as HTMLButtonElement;
-        const ariaLabel = target.ariaLabel;
+        const ariaLabel = target.ariaLabel as string;
         if (player && playUrl) {
             if (onPtz === ariaLabel) {
                 setOnPtz(false);
@@ -330,7 +330,7 @@ export const LiveStreamControls = (props: LiveStreamControlsProps): JSX.Element 
     const togglePoinPtzControl = (e: MouseEvent): void => {
         removePtzCanvas();
         const target = e.currentTarget as HTMLButtonElement;
-        const ariaLabel = target.ariaLabel;
+        const ariaLabel = target.ariaLabel as string;
         if (player && playUrl) {
             if (onPtz === ariaLabel) {
                 setOnPtz(false);
