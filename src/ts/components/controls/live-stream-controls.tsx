@@ -134,7 +134,9 @@ export const LiveStreamControls = (props: LiveStreamControlsProps): JSX.Element 
             playerCtrl.classList.remove('fade-in');
             playerCtrl.classList.add('fade-out');
             const ptzListWrap = document.querySelector('.ptz-list-wrap') as HTMLDivElement;
-            ptzListWrap.style.display = 'none';
+            if (ptzListWrap) {
+                ptzListWrap.style.display = 'none';
+            }
         });
     };
 
