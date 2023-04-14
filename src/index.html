@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body style="padding:2em; margin:0; width: 100%; height: 100vh; overflow-x: hidden; overflow-y: auto; display: flex; align-items: center; flex-direction: row;">
-        <button style="width: auto; height: 50px;" onclick="deleteFunc()">플레이어 삭제</button>
-        <div id="player" style="width: 720px; height: 405px; margin-bottom: 15px;"></div>
-        <button style="width: auto; height: 50px;" onclick="deleteFunc1()">플레이어 삭제</button>
-        <div id="player1" style="width: 720px; height: 405px;"></div>
-    </body>
-    <script>
-        /*
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body
+    style="
+      padding: 2em;
+      margin: 0;
+      width: 100%;
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    "
+  >
+    <button style="width: auto; height: 50px" onclick="deleteFunc()">
+      플레이어 삭제
+    </button>
+    <div
+      id="player"
+      style="width: 720px; height: 405px; margin-bottom: 15px"
+    ></div>
+    <button style="width: auto; height: 50px" onclick="deleteFunc1()">
+      플레이어 삭제
+    </button>
+    <div id="player1" style="width: 720px; height: 405px"></div>
+  </body>
+  <script>
+    /*
         const options = {
             parentElementId: 'player1',             // video 태그가 위치 할 부모 element ID
             id: 'dms_video_1',                      // 생성대상 플레이어의 ID 지정
@@ -36,57 +55,62 @@
         };
         */
 
-        const options = {
-            parentElementId: 'player',             // video 태그가 위치 할 부모 element ID
-            id: 'dms_video',                        // 생성대상 플레이어의 ID 지정
-            url: 'vurix:///100869/1/0/0',           // [vurix or realhub(원본소스타입)]:///[vms_id]/[dev_serial]/[channel]/[media] 
-            protocol: 'http',                       // media server url: 프로토콜 정보, http/https
-            host: 'ca-172-16-36-180.vurix.kr',      // media server url: host 정보, 접속 host url 또는 사용 할 media server host url
-            transcode: 720,                         // 인코딩 요청 값: -1=인코딩 적용 X, 0=원본, [-1, 0을 제외한 최소 값은 32]
-            startDate: 1648343515,                  // 저장영상 재생: 시작 UTC 시간(실시간일 경우 X)
-            endDate: 1648344015,                    // 저장영상 재생: 종료 UTC 시간(실시간일 경우 X)
-            autoPlay: false,                        // 자동재생: true/false
-            playSpeed: 1,                           // 배속재생(저장 영상) 옵션, 해당 옵션 없을 경우, 배속 버튼 표시 X (기본 재생 속도 1.0, 2배속/4배속 지원)   
-            snapshot: false,                         // progress bar 마우스 이동 시, 스냅샷 처리 여부 (미구현)
-            capture: true,                          // 화면 캡쳐 버튼 활성화 여부
-            searchDate: true,                       // 저장영상 검색 기능 (미구현)
-            scale: 10,                              // 저장영상 구간 눈금 표시 여부
-            buttonTooltip: false,                   // 버튼 툴팁 표시 여부
-            errorMsgFunc: ((err) => {               // 에러 발생 콜백
-				console.error(err);
-			})
-        };
-        
-        const playerInstance = new dmsPlayerComponent.Player(document.getElementById('player'));
-        playerInstance.render(options);
+    const options = {
+      parentElementId: "player", // video 태그가 위치 할 부모 element ID
+      id: "dms_video", // 생성대상 플레이어의 ID 지정
+      url: "vurix:///100869/1/0/0", // [vurix or realhub(원본소스타입)]:///[vms_id]/[dev_serial]/[channel]/[media]
+      protocol: "http", // media server url: 프로토콜 정보, http/https
+      host: "ca-10-10-97-180.vurix.kr", // media server url: host 정보, 접속 host url 또는 사용 할 media server host url
+      transcode: 720, // 인코딩 요청 값: -1=인코딩 적용 X, 0=원본, [-1, 0을 제외한 최소 값은 32]
+      startDate: 1676933130, // 저장영상 재생: 시작 UTC 시간(실시간일 경우 X)
+      endDate: 1676933430, // 저장영상 재생: 종료 UTC 시간(실시간일 경우 X)
+      autoPlay: false, // 자동재생: true/false
+      playSpeed: 1, // 배속재생(저장 영상) 옵션, 해당 옵션 없을 경우, 배속 버튼 표시 X (기본 재생 속도 1.0, 2배속/4배속 지원)
+      snapshot: false, // progress bar 마우스 이동 시, 스냅샷 처리 여부 (미구현)
+      capture: true, // 화면 캡쳐 버튼 활성화 여부
+      searchDate: true, // 저장영상 검색 기능 (미구현)
+      scale: 10, // 저장영상 구간 눈금 표시 여부
+      buttonTooltip: false, // 버튼 툴팁 표시 여부
+      errorMsgFunc: (err) => {
+        // 에러 발생 콜백
+        console.error(err);
+      },
+    };
 
-        // 삭제
-        function deleteFunc() {
-            playerInstance.destroy();
-        }
+    const playerInstance = new dmsPlayerComponent.Player(
+      document.getElementById("player")
+    );
+    playerInstance.render(options);
 
-        const options1 = {
-            parentElementId: 'player1',             // video 태그가 위치 할 부모 element ID
-            id: 'dms_video_1',                      // 생성대상 플레이어의 ID 지정
-            url: 'vurix:///100869/51/0/0',          // [vurix or realhub(원본소스타입)]:///[vms_id]/[dev_serial]/[channel]/[media] 
-            protocol: 'http',                       // media server url: 프로토콜 정보, http/https
-            host: 'ca-172-16-36-180.vurix.kr',      // media server url: host 정보, 접속 host url 또는 사용 할 media server host url
-            transcode: 720,                         // 인코딩 요청 값: -1=인코딩 적용 X, 0=원본, [-1, 0을 제외한 최소 값은 32]
-            ptz: true,                              // ptz 정보 전달 여부
-            autoPlay: true,                         // 자동재생: true/false
-            capture: true,                          // 화면 캡쳐 버튼 활성화 여부
-            buttonTooltip: true,                   // 버튼 툴팁 표시 여부
-            errorMsgFunc: ((err) => {               // 에러 발생 콜백
-				console.error(err);
-			})
-        };
-        
-        const playerInstance1 = new dmsPlayerComponent.Player(document.getElementById('player1'));
-        playerInstance1.render(options1);
+    // 삭제
+    function deleteFunc() {
+      playerInstance.destroy();
+    }
 
-        function deleteFunc1() {
-            playerInstance1.destroy();
-        }
+    const options1 = {
+      parentElementId: "player1", // video 태그가 위치 할 부모 element ID
+      id: "dms_video_1", // 생성대상 플레이어의 ID 지정
+      url: "vurix:///100869/51/0/0", // [vurix or realhub(원본소스타입)]:///[vms_id]/[dev_serial]/[channel]/[media]
+      protocol: "http", // media server url: 프로토콜 정보, http/https
+      host: "ca-10-10-97-180.vurix.kr", // media server url: host 정보, 접속 host url 또는 사용 할 media server host url
+      transcode: 720, // 인코딩 요청 값: -1=인코딩 적용 X, 0=원본, [-1, 0을 제외한 최소 값은 32]
+      ptz: true, // ptz 정보 전달 여부
+      autoPlay: true, // 자동재생: true/false
+      capture: true, // 화면 캡쳐 버튼 활성화 여부
+      buttonTooltip: true, // 버튼 툴팁 표시 여부
+      errorMsgFunc: (err) => {
+        // 에러 발생 콜백
+        console.error(err);
+      },
+    };
 
-    </script>
+    const playerInstance1 = new dmsPlayerComponent.Player(
+      document.getElementById("player1")
+    );
+    playerInstance1.render(options1);
+
+    function deleteFunc1() {
+      playerInstance1.destroy();
+    }
+  </script>
 </html>
