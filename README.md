@@ -1,8 +1,4 @@
-# [dms-player-component.js](https://innodep.co.kr/renew/)
-
-[![npm version](https://img.shields.io/npm/v/dms-player-component.svg?style=flat-square)](https://www.npmjs.com/package/dms-player-component)
-[![npm downloads](https://img.shields.io/npm/dm/dms-player-component.svg?style=flat-square)](https://www.npmjs.com/package/dms-player-component)
-[![size](https://img.shields.io/bundlephobia/minzip/dms-player-component.svg?style=flat)](https://bundlephobia.com/result?p=dms-player-component)
+# [@innodep/dms-player-component](https://innodep.co.kr/renew/)
 
 dms-player-component 는 [**이노뎁(주)**](http://www.innodep.com/)의 [dms-player](https://www.npmjs.com/package/dms-player) 영상 연동 모듈을 활용한 preact 기반 컴포넌트 라이브러리 입니다.
 
@@ -13,23 +9,26 @@ dms-player-component 는 [**이노뎁(주)**](http://www.innodep.com/)의 [dms-p
 
 ## Install
 
-<PRE style="padding: 16px;overflow: auto;font-size: 85%;line-height: 1.45;background-color: #e2e2e2;border-radius: 3px;">
-$ npm install --save dms-player-component # Latest Version
-$ npm install --save dms-player-component@<version> # Specific Version
-</PRE>
+```typescript
+// 레지스트리 등록 한번만 수행
+npm config set @innodep:registry=https://npm-20-41-97-34.vurix.kr/
+
+$ npm install --save @innodep/dms-player-component # Latest Version
+$ npm install --save @innodep/dms-player-component@<version> # Specific Version
+```
 
 ## Usage
 
 #### ES6 Modules
 
 ```sh
-import dmsPlayerComponent from 'dms-player-component';
+import dmsPlayerComponent from ' @innodep/dms-player-component';
 ```
 
 #### CommonJS
 
 ```sh
-const dmsPlayerComponent = require('dms-player-component');
+const dmsPlayerComponent = require(' @innodep/dms-player-component');
 ```
 
 #### Examples

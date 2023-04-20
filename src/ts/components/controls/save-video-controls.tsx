@@ -35,6 +35,7 @@ export const SaveVideoControls = (
   const [playSpeed, setPlaySpeed] = useState(10);
   const [playSpeedBtnDisabled, setPlaySpeedBtnDisabled] =
     useState<boolean>(false);
+  const [playBtnDisabled, setPlayBtnDisabled] = useState<boolean>(false);
   const [isPlay, setIsPlay] = useState<boolean | undefined>(
     propsOptions.autoPlay
   );
@@ -289,6 +290,11 @@ export const SaveVideoControls = (
     date?: number | undefined;
     speed?: number;
   }): void => {
+    setPlayBtnDisabled(true);
+    setTimeout(() => {
+      setPlayBtnDisabled(false);
+    }, 1500);
+
     if (player) {
       setIsPlay(true);
       refIsPlay.current = true;
@@ -325,6 +331,11 @@ export const SaveVideoControls = (
    * 저장 영상 정지
    */
   const saveVideoPause = (): void => {
+    setPlayBtnDisabled(true);
+    setTimeout(() => {
+      setPlayBtnDisabled(false);
+    }, 1500);
+
     if (player) {
       setIsPlay(false);
       refIsPlay.current = false;
@@ -403,7 +414,7 @@ export const SaveVideoControls = (
         <div className="left-controls control-box">
           {isPlay ? (
             <button
-              className="control-btn"
+              className={`control-btn ${playBtnDisabled ? "disabled" : ""}`}
               onClick={() => saveVideoPause()}
               aria-label="저장 영상 정지"
             >
@@ -411,7 +422,7 @@ export const SaveVideoControls = (
             </button>
           ) : (
             <button
-              className="control-btn"
+              className={`control-btn ${playBtnDisabled ? "disabled" : ""}`}
               onClick={() => saveVideoPlay({ date: currentDate })}
               aria-label="저장 영상 재생"
             >
