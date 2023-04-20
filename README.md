@@ -1,6 +1,6 @@
 # [@innodep/dms-player-component](https://innodep.co.kr/renew/)
 
-dms-player-component 는 [**이노뎁(주)**](http://www.innodep.com/)의 [dms-player](https://www.npmjs.com/package/dms-player) 영상 연동 모듈을 활용한 preact 기반 컴포넌트 라이브러리 입니다. 실행 환경은 node 14버전에서 정상 동작 합니다.
+dms-player-component 는 [**이노뎁(주)**](http://www.innodep.com/)의 [dms-player](https://www.npmjs.com/package/dms-player) 영상 연동 모듈을 활용한 preact 기반 컴포넌트 라이브러리 입니다.
 
 ## 🚩 Table of Contents
 

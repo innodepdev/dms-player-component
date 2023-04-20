@@ -23,7 +23,7 @@ const config = {
     libraryTarget: "umd", // 라이브러리 타겟 설정
     libraryExport: "default", // 엔트리 포인트의 default export를 네임스페이스에 설정하는 옵션
     path: path.join(__dirname, "dist"),
-    filename: pkg.name + ".js",
+    filename: "dms-player-component.js",
     publicPath: "/dist",
   },
   resolve: {
