@@ -23,7 +23,8 @@ const config = {
     libraryTarget: "umd", // 라이브러리 타겟 설정
     libraryExport: "default", // 엔트리 포인트의 default export를 네임스페이스에 설정하는 옵션
     path: path.join(__dirname, "dist"),
-    filename: "dms-player-component.js",
+    // filename: `${pkg.name}.js`,
+    filename: "index.js",
     publicPath: "/dist",
   },
   resolve: {
@@ -99,10 +100,10 @@ const config = {
     }),
     new StyleLintPlugin(), // style linting 용
     new DtsBundleWebpack({
-      name: "dms-player-component",
+      name: "@innodep/dms-player-component",
       main: path.resolve(__dirname, "./build/ts/index.d.ts"),
       baseDir: "build",
-      out: path.resolve(__dirname, "./dist/dms-player-component.d.ts"),
+      out: path.resolve(__dirname, "./dist/index.d.ts"),
     }),
   ],
   devServer: {

@@ -1,13 +1,9 @@
 {
   "name": "@innodep/dms-player-component",
   "version": "1.0.0",
-  "main": "dist/dms-player-component.js",
+  "main": "dist/index.js",
   "author": "TMS Platform Team, Ju Seongjin <jsj@innodep.com>",
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/innodepdev/dms-player-component.git"
-  },
   "browserslist": [
     "defaults"
   ],

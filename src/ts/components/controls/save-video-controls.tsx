@@ -34,8 +34,8 @@ export const SaveVideoControls = (
   const [playUrl, setPlayUrl] = useState("");
   const [playSpeed, setPlaySpeed] = useState(10);
   const [playSpeedBtnDisabled, setPlaySpeedBtnDisabled] =
-    useState<boolean>(false);
-  const [playBtnDisabled, setPlayBtnDisabled] = useState<boolean>(false);
+    useState<boolean>(true);
+  const [playBtnDisabled, setPlayBtnDisabled] = useState<boolean>(true);
   const [isPlay, setIsPlay] = useState<boolean | undefined>(
     propsOptions.autoPlay
   );
@@ -47,6 +47,7 @@ export const SaveVideoControls = (
 
   const SIDE_PADDING = "1em";
   const CONTROL_AREA_CLASS = ".dms-player-save-video-contorl";
+  const DELAY_PLAY_TIME = 2000;
 
   let escHandler: () => void;
   let playingHandler: () => void;
@@ -241,7 +242,8 @@ export const SaveVideoControls = (
     player?.addEventListener("playing", playingHandler);
     setTimeout(() => {
       setPlaySpeedBtnDisabled(false);
-    }, 1500);
+      setPlayBtnDisabled(false);
+    }, DELAY_PLAY_TIME);
   };
 
   /**
@@ -291,9 +293,11 @@ export const SaveVideoControls = (
     speed?: number;
   }): void => {
     setPlayBtnDisabled(true);
+    setPlaySpeedBtnDisabled(true);
     setTimeout(() => {
       setPlayBtnDisabled(false);
-    }, 1500);
+      setPlaySpeedBtnDisabled(false);
+    }, DELAY_PLAY_TIME);
 
     if (player) {
       setIsPlay(true);
@@ -312,6 +316,7 @@ export const SaveVideoControls = (
    */
   const setIncreasePlaySpeed = (): void => {
     setPlaySpeedBtnDisabled(true);
+    setPlayBtnDisabled(true);
     switch (playSpeed) {
       case 10:
         setPlaySpeed(20);
@@ -332,9 +337,11 @@ export const SaveVideoControls = (
    */
   const saveVideoPause = (): void => {
     setPlayBtnDisabled(true);
+    setPlaySpeedBtnDisabled(true);
     setTimeout(() => {
       setPlayBtnDisabled(false);
-    }, 1500);
+      setPlaySpeedBtnDisabled(false);
+    }, DELAY_PLAY_TIME);
 
     if (player) {
       setIsPlay(false);
