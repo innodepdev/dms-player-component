@@ -47,7 +47,7 @@ export const SaveVideoControls = (
 
   const SIDE_PADDING = "1em";
   const CONTROL_AREA_CLASS = ".dms-player-save-video-contorl";
-  const DELAY_PLAY_TIME = 2000;
+  const DELAY_PLAY_TIME = 2500;
 
   let escHandler: () => void;
   let playingHandler: () => void;
@@ -240,10 +240,6 @@ export const SaveVideoControls = (
       }
     };
     player?.addEventListener("playing", playingHandler);
-    setTimeout(() => {
-      setPlaySpeedBtnDisabled(false);
-      setPlayBtnDisabled(false);
-    }, DELAY_PLAY_TIME);
   };
 
   /**
